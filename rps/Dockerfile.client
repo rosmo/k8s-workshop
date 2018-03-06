@@ -1,0 +1,13 @@
+FROM python:3
+
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
+RUN pip install -r requirements.txt
+
+COPY rockpaperscissors-client.py ./
+RUN mkdir templates
+COPY templates/index.html templates/
+
+ENTRYPOINT [ "python" ]
+CMD [ "rockpaperscissors-client.py" ]
